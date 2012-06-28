@@ -51,6 +51,8 @@ Release 2.0.3-alpha - Unreleased
     HADOOP-8911. CRLF characters in source and text files.
     (Raja Aluri via suresh)
 
+    HDFS-3571. Allow EditLogFileInputStream to read from a remote URL (todd)
+
   OPTIMIZATIONS
 
   BUG FIXES 
