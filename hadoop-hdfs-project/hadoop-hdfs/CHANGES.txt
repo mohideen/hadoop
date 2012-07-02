@@ -53,6 +53,8 @@ Release 2.0.3-alpha - Unreleased
 
     HDFS-3571. Allow EditLogFileInputStream to read from a remote URL (todd)
 
+    HDFS-3573. Supply NamespaceInfo when instantiating JournalManagers (todd)
+
   OPTIMIZATIONS
 
   BUG FIXES 
