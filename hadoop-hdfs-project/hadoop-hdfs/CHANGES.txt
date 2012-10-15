@@ -63,6 +63,8 @@ Release 2.0.3-alpha - Unreleased
     HDFS-3789. JournalManager#format() should be able to throw IOException
     (Ivan Kelly via todd)
 
+    HDFS-3792. Fix two findbugs introduced by HDFS-3695 (todd)
+
   OPTIMIZATIONS
 
   BUG FIXES 
