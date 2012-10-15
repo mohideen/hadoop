@@ -190,7 +190,7 @@ public class MiniDFSCluster {
       this.manageNameDfsDirs = val;
       return this;
     }
-
+    
     /**
      * Default: true
      */
@@ -416,7 +416,7 @@ public class MiniDFSCluster {
   public MiniDFSCluster(Configuration conf,
                         int numDataNodes,
                         StartupOption nameNodeOperation) throws IOException {
-    this(0, conf, numDataNodes, false, false, false,  nameNodeOperation, 
+    this(0, conf, numDataNodes, false, false, false, false,  nameNodeOperation, 
           null, null, null);
   }
   
@@ -438,7 +438,8 @@ public class MiniDFSCluster {
                         int numDataNodes,
                         boolean format,
                         String[] racks) throws IOException {
-    this(0, conf, numDataNodes, format, true, true,  null, racks, null, null);
+    this(0, conf, numDataNodes, format, true, true, true, null,
+        racks, null, null);
   }
   
   /**
@@ -460,7 +461,8 @@ public class MiniDFSCluster {
                         int numDataNodes,
                         boolean format,
                         String[] racks, String[] hosts) throws IOException {
-    this(0, conf, numDataNodes, format, true, true, null, racks, hosts, null);
+    this(0, conf, numDataNodes, format, true, true, true, null,
+        racks, hosts, null);
   }
   
   /**
@@ -493,8 +495,8 @@ public class MiniDFSCluster {
                         boolean manageDfsDirs,
                         StartupOption operation,
                         String[] racks) throws IOException {
-    this(nameNodePort, conf, numDataNodes, format, manageDfsDirs, manageDfsDirs,
-         operation, racks, null, null);
+    this(nameNodePort, conf, numDataNodes, format, manageDfsDirs,
+        manageDfsDirs, manageDfsDirs, operation, racks, null, null);
   }
 
   /**
@@ -528,7 +530,7 @@ public class MiniDFSCluster {
                         String[] racks,
                         long[] simulatedCapacities) throws IOException {
     this(nameNodePort, conf, numDataNodes, format, manageDfsDirs, manageDfsDirs,
-          operation, racks, null, simulatedCapacities);
+        manageDfsDirs, operation, racks, null, simulatedCapacities);
   }
   
   /**
@@ -562,13 +564,14 @@ public class MiniDFSCluster {
                         int numDataNodes,
                         boolean format,
                         boolean manageNameDfsDirs,
+                        boolean enableManagedDfsDirsRedundancy,
                         boolean manageDataDfsDirs,
                         StartupOption operation,
                         String[] racks, String hosts[],
                         long[] simulatedCapacities) throws IOException {
     this.nameNodes = new NameNodeInfo[1]; // Single namenode in the cluster
     initMiniDFSCluster(conf, numDataNodes, format,
-        manageNameDfsDirs, true, true, manageDataDfsDirs,
+        manageNameDfsDirs, true, enableManagedDfsDirsRedundancy, manageDataDfsDirs,
         operation, racks, hosts,
         simulatedCapacities, null, true, false,
         MiniDFSNNTopology.simpleSingleNN(nameNodePort, 0), true, false);
